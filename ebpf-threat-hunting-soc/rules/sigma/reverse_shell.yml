@@ -1,0 +1,16 @@
+# Copyright (c) 2026 Devendra Kumar Sahu
+# SPDX-License-Identifier: MIT
+title: Reverse Shell Command Line
+id: 6f0a1c2e-3d1b-4b8e-9a51-0c1f7e2a9b11
+status: stable
+description: Classic bash / nc / python reverse shell one-liners.
+author: Devendra Kumar Sahu
+logsource:
+  product: linux
+  category: process_creation
+detection:
+  sel:
+    CommandLine|contains: ['/dev/tcp/', 'nc -e', 'ncat -e', 'bash -i >&', 'socket.socket(', 'mkfifo /tmp']
+  condition: sel
+level: critical
+tags: [attack.execution, attack.t1059.004]
